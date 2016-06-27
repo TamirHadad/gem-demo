@@ -5,7 +5,7 @@ require 'gemNumGen/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "gemNumGen"
-  spec.version       = "1.0.1"
+  spec.version       = GemNumGen::VERSION
   spec.authors       = ["tamirh"]
   spec.email         = ["tamirh@jfrog.com"]
 
