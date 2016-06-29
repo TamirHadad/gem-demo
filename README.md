@@ -38,7 +38,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 node {
   stage 'Clone Gem Demo git repo'
   git url: 'https://github.com/TamirHadad/gem-demo.git'
-  def version = "${env.BUILD_ID}.0.0"
+  def version = "2.${env.BUILD_ID}.0"
   withEnv(["RUBYGEMS_HOST=http://localhost:8081/artifactory/api/gems/gems-local","GEM_VERSION=${version}"]) {
       stage "Let's test"
       sh "rspec spec"
@@ -47,6 +47,8 @@ node {
       sh "gem build gemNumGen.gemspec"
       stage "Let's Deploy"
       sh "gem push gem*${version}.gem"
+      
+      env.BUILD_PROPS = "gem.name=gemNumGen;gem.version=${version}"
   }
 }
 ```
